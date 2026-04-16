@@ -7,7 +7,15 @@
   <meta name="description" content="Juno — coming soon." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MME55MLNDQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MME55MLNDQ');
+  </script>
   <style>
     :root {
       --purple: #3b1a78;
@@ -70,12 +78,14 @@
       margin: 0;
       padding: 35vh 24px 0;
       text-align: center;
-      font-weight: 700;
+      font-weight: 400;
       font-size: clamp(32px, 6.3vw, 64px);
       color: #000;
       letter-spacing: 0.01em;
       line-height: 1.1;
     }
+
+    .headline .brand { font-weight: 700; }
 
     footer {
       margin-top: auto;
@@ -142,7 +152,7 @@
   </style>
 </head>
 <body>
-  <h1 class="headline">Juno. Coming soon.</h1>
+  <h1 class="headline"><span class="brand">Juno.</span> Coming soon.</h1>
   <footer>
     <nav>
       <a href="privacy.html">Privacy Policy</a>

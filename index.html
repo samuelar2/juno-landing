@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Juno. Coming soon.</title>
+  <meta name="description" content="Juno — coming soon." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --purple: #3b1a78;
+      --purple-deep: #1b0b3d;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #ffffff;
+      font-family: "Sulphur Point", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(
+          ellipse 88% 50% at 50% 108%,
+          #1b0b3d 0%,
+          #24104a 15%,
+          #2b1258 30%,
+          #341670 45%,
+          var(--purple) 55%,
+          var(--purple) 70%,
+          rgba(59, 26, 120, 0.995) 72%,
+          rgba(59, 26, 120, 0.985) 74%,
+          rgba(59, 26, 120, 0.970) 76%,
+          rgba(59, 26, 120, 0.950) 78%,
+          rgba(59, 26, 120, 0.920) 80%,
+          rgba(59, 26, 120, 0.880) 82%,
+          rgba(59, 26, 120, 0.830) 84%,
+          rgba(59, 26, 120, 0.770) 86%,
+          rgba(59, 26, 120, 0.700) 87%,
+          rgba(59, 26, 120, 0.620) 88%,
+          rgba(59, 26, 120, 0.540) 89%,
+          rgba(59, 26, 120, 0.460) 90%,
+          rgba(59, 26, 120, 0.380) 91%,
+          rgba(59, 26, 120, 0.310) 92%,
+          rgba(59, 26, 120, 0.250) 93%,
+          rgba(59, 26, 120, 0.190) 94%,
+          rgba(59, 26, 120, 0.140) 95%,
+          rgba(59, 26, 120, 0.100) 96%,
+          rgba(59, 26, 120, 0.070) 97%,
+          rgba(59, 26, 120, 0.040) 98%,
+          rgba(59, 26, 120, 0.020) 99%,
+          rgba(59, 26, 120, 0.000) 100%
+        ) no-repeat,
+        #ffffff;
+    }
+
+    .headline {
+      margin: 0;
+      padding: 35vh 24px 0;
+      text-align: center;
+      font-weight: 700;
+      font-size: clamp(32px, 6.3vw, 64px);
+      color: #000;
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 0 24px 40px;
+      text-align: center;
+    }
+
+    footer nav {
+      display: inline-flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.77);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 640px) {
+      body {
+        background:
+          radial-gradient(
+            ellipse 125% 42% at 50% 108%,
+            #1b0b3d 0%,
+            #24104a 15%,
+            #2b1258 30%,
+            #341670 45%,
+            var(--purple) 55%,
+            var(--purple) 70%,
+            rgba(59, 26, 120, 0.995) 72%,
+            rgba(59, 26, 120, 0.985) 74%,
+            rgba(59, 26, 120, 0.970) 76%,
+            rgba(59, 26, 120, 0.950) 78%,
+            rgba(59, 26, 120, 0.920) 80%,
+            rgba(59, 26, 120, 0.880) 82%,
+            rgba(59, 26, 120, 0.830) 84%,
+            rgba(59, 26, 120, 0.770) 86%,
+            rgba(59, 26, 120, 0.700) 87%,
+            rgba(59, 26, 120, 0.620) 88%,
+            rgba(59, 26, 120, 0.540) 89%,
+            rgba(59, 26, 120, 0.460) 90%,
+            rgba(59, 26, 120, 0.380) 91%,
+            rgba(59, 26, 120, 0.310) 92%,
+            rgba(59, 26, 120, 0.250) 93%,
+            rgba(59, 26, 120, 0.190) 94%,
+            rgba(59, 26, 120, 0.140) 95%,
+            rgba(59, 26, 120, 0.100) 96%,
+            rgba(59, 26, 120, 0.070) 97%,
+            rgba(59, 26, 120, 0.040) 98%,
+            rgba(59, 26, 120, 0.020) 99%,
+            rgba(59, 26, 120, 0.000) 100%
+          ) no-repeat,
+          #ffffff;
+      }
+      .headline { padding-top: 32vh; }
+      footer nav { gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="headline">Juno. Coming soon.</h1>
+  <footer>
+    <nav>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="mailto:hello@juno-labs.ai">Contact</a>
+    </nav>
+  </footer>
+</body>
+</html>

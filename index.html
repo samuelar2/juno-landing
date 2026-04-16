@@ -27,18 +27,13 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
-      background: #ffffff;
       font-family: "Sulphur Point", system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      overflow: hidden;
     }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    html {
+      height: 100%;
       background:
         radial-gradient(
           ellipse 88% 50% at 50% 108%,
@@ -72,6 +67,16 @@
           rgba(59, 26, 120, 0.000) 100%
         ) no-repeat,
         #ffffff;
+      background-size: 100% 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background: transparent;
+      overflow-x: hidden;
     }
 
     .headline {
@@ -111,7 +116,7 @@
     footer a:hover { color: #fff; }
 
     @media (max-width: 640px) {
-      body {
+      html {
         background:
           radial-gradient(
             ellipse 125% 42% at 50% 108%,
@@ -145,6 +150,7 @@
             rgba(59, 26, 120, 0.000) 100%
           ) no-repeat,
           #ffffff;
+        background-size: 100% 100%;
       }
       .headline { padding-top: 32vh; }
       footer nav { gap: 18px; }

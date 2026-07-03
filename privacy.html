@@ -263,9 +263,11 @@
       context from your connected accounts to generate a response or action.
     </p>
     <ul>
-      <li><strong>Human review:</strong> We do not read your individual conversations in the ordinary course of business. Staff access to production data is restricted, logged, and used only for debugging or abuse investigation.</li>
-      <li><strong>AI subprocessors:</strong> To generate responses and run automations, relevant content (your messages, and data from connected services that a task needs) is processed transiently by our AI infrastructure providers under agreements that prohibit them from training on your data. A current list of subprocessor categories is available on request.</li>
-      <li><strong>Encryption:</strong> All data is encrypted in transit and at rest. Highly sensitive fields (travel documents, account credentials, extracted tickets) are additionally encrypted at the application layer with keys unique to your account. AI processing necessarily operates on decrypted content for the duration of a request — osmos is not end-to-end encrypted.</li>
+      <li><strong>Machines, not people:</strong> Your chats, emails, and connected-service data are processed by automated systems. Nobody at Brightboard reads them in the normal operation of the service; direct production access is restricted to essential operations — debugging an issue you report, or investigating abuse — and we are progressively locking such access behind per-record, logged decryption.</li>
+      <li><strong>Encryption at rest:</strong> Everything we store is encrypted at rest (AES-256) and in transit (TLS 1.2+). Sensitive personal data — such as travel documents, connected-account credentials, and cached message content — is additionally encrypted at the application layer with keys unique to your account, so a copy of our database alone reveals nothing. Content is decrypted only inside our systems, for the moments a request or automation needs it.</li>
+      <li><strong>Your mailbox stays yours:</strong> Your email passwords and mailbox tokens are never stored on our servers. We do not keep a copy of your mailbox — messages are read transiently to power features, and what we retain is the useful result (a ticket, a calendar event, a needs-reply flag) plus short-lived, size-limited caches.</li>
+      <li><strong>AI subprocessors:</strong> To generate responses and run automations, the content a task needs is processed transiently by our AI infrastructure providers under agreements that prohibit them from training on your data or retaining it. A current list of subprocessor categories is available on request.</li>
+      <li><strong>Never sold, never used for ads, never used for training:</strong> We do not sell your data, use it for advertising, or use it to train AI models.</li>
       <li><strong>Automated actions:</strong> osmos may draft or suggest actions (e.g. reply to an email, approve a payment), but actions with significant consequences require your explicit confirmation before execution.</li>
     </ul>
 
@@ -300,14 +302,15 @@
     <p>
       We implement industry-standard technical and organisational measures to
       protect your data: encryption in transit (TLS 1.2+) and at rest
-      (AES-256), application-layer encryption with per-user keys for highly
-      sensitive fields (travel documents, OAuth credentials, extracted
-      tickets), access controls with logged administrative access, and
-      internal security review of our systems. Where possible we avoid holding
-      credentials at all — mailbox OAuth tokens for Gmail and Outlook are held
-      by our integration provider, not on our servers. No method of
-      transmission or storage is completely secure. If you become aware of a
-      security vulnerability, please contact us immediately at
+      (AES-256), application-layer encryption with per-user keys for
+      sensitive fields (such as travel documents, connected-account
+      credentials, and cached message content — a set we are actively
+      expanding), strict access controls, and internal security review of our
+      systems. Where possible we avoid holding credentials at all — mailbox
+      OAuth tokens for Gmail and Outlook are held by our integration
+      provider, not on our servers. No method of transmission or storage is
+      completely secure. If you become aware of a security vulnerability,
+      please contact us immediately at
       <a href="mailto:help@meetosmos.com">help@meetosmos.com</a>.
     </p>
 

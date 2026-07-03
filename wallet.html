@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>osmos — Manage your payment method</title>
+  <meta name="description" content="Manage the payment card your osmos agent uses for bookings — update, replace, or remove it any time." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MME55MLNDQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MME55MLNDQ');
+  </script>
+  <style>
+    :root {
+      --purple: #3b1a78;
+      --ink: #111;
+      --muted: #555;
+      --rule: #e6e6ee;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    main {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    h1 {
+      font-family: "Sulphur Point", system-ui, sans-serif;
+      font-size: 32px;
+      color: var(--purple);
+      margin: 0 0 8px;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin: 32px 0 8px;
+    }
+
+    p { margin: 0 0 16px; color: var(--muted); }
+    ol { color: var(--muted); padding-left: 20px; }
+    li { margin-bottom: 8px; }
+
+    .cta {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 22px;
+      background: var(--purple);
+      color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 1px solid var(--rule);
+      margin-top: 48px;
+      padding-top: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    footer a { color: var(--purple); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Manage your payment method</h1>
+    <p>
+      osmos books trains and hotels on your behalf using the payment card
+      you saved — each booking is either approved by you in the app, or
+      made automatically within the spending limits you set. Amounts vary
+      per booking and are always shown before purchase.
+    </p>
+
+    <h2>Update, replace, or remove your card</h2>
+    <ol>
+      <li>Open the <strong>osmos</strong> app on your iPhone.</li>
+      <li>Go to <strong>Apps&nbsp;→&nbsp;Wallet</strong>.</li>
+      <li>Under <strong>Payment</strong>, choose <strong>Replace</strong> to save a different card, or <strong>Remove</strong> to revoke it entirely.</li>
+    </ol>
+    <p>
+      Removing your card immediately stops all future charges, including
+      automatic bookings. You can also change or switch off automatic
+      booking limits under <strong>Limits</strong> on the same screen.
+    </p>
+    <a class="cta" href="osmos://wallet">Open in the osmos app</a>
+
+    <h2>Need help?</h2>
+    <p>
+      If you can't access the app, email
+      <a href="mailto:support@meetosmos.com">support@meetosmos.com</a>
+      from your account email and we'll remove the card for you.
+    </p>
+
+    <footer>
+      <a href="/">osmos</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+    </footer>
+  </main>
+</body>
+</html>

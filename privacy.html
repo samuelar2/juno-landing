@@ -156,7 +156,7 @@
     <h1>osmos Privacy Policy</h1>
     <p class="meta">
       <span>Effective date: 16 April 2026</span>
-      <span>Last updated: 16 April 2026</span>
+      <span>Last updated: 3 July 2026</span>
     </p>
 
     <h2>1. Introduction</h2>
@@ -188,7 +188,16 @@
     <p>
       osmos's core value is integrating with your existing tools. When you
       connect a third-party service, we access only the data necessary to
-      provide the requested functionality:
+      provide the requested functionality.
+    </p>
+    <p>
+      <strong>Background scanning:</strong> osmos is a proactive assistant.
+      Once you connect an account, osmos scans it continuously in the
+      background — not only when you ask — to surface bookings and tickets,
+      flag messages that need a reply, and prepare your briefings. Connecting
+      an account is your instruction to do this; disconnecting it (Tool
+      Manager, anytime) stops the scanning and removes the cached data for
+      that service.
     </p>
     <table>
       <thead>
@@ -254,7 +263,9 @@
       context from your connected accounts to generate a response or action.
     </p>
     <ul>
-      <li><strong>Human review:</strong> We do not review your individual conversations. All conversation data is anonymised and encrypted.</li>
+      <li><strong>Human review:</strong> We do not read your individual conversations in the ordinary course of business. Staff access to production data is restricted, logged, and used only for debugging or abuse investigation.</li>
+      <li><strong>AI subprocessors:</strong> To generate responses and run automations, relevant content (your messages, and data from connected services that a task needs) is processed transiently by our AI infrastructure providers under agreements that prohibit them from training on your data. A current list of subprocessor categories is available on request.</li>
+      <li><strong>Encryption:</strong> All data is encrypted in transit and at rest. Highly sensitive fields (travel documents, account credentials, extracted tickets) are additionally encrypted at the application layer with keys unique to your account. AI processing necessarily operates on decrypted content for the duration of a request — osmos is not end-to-end encrypted.</li>
       <li><strong>Automated actions:</strong> osmos may draft or suggest actions (e.g. reply to an email, approve a payment), but actions with significant consequences require your explicit confirmation before execution.</li>
     </ul>
 
@@ -273,23 +284,30 @@
     <h2>6. Data Retention</h2>
     <p>
       We retain your personal data for as long as your account is active or as
-      needed to provide the Services. Chat history and AI interaction logs are
-      retained for the duration of your account unless you delete them. When
-      you disconnect an integration, we stop accessing new data from that
-      service and delete cached data within 30 days. If you delete your
-      account, we will delete or anonymise your personal data within 90 days,
-      except where retention is required by law.
+      needed to provide the Services. Chat history is retained for the duration
+      of your account unless you delete it. Cached data from connected services
+      is time-limited (for example, mirrored email metadata is deleted after
+      180 days and message content caches within days). When you disconnect an
+      integration, we stop accessing new data from that service and delete its
+      cached data. You can delete your account at any time in the app
+      (Settings → Delete Account): this immediately and permanently deletes
+      your data — including chats, AI memory, extracted tickets, and uploads —
+      and revokes our access to your connected accounts, except where retention
+      is required by law.
     </p>
 
     <h2>7. Data Security</h2>
     <p>
       We implement industry-standard technical and organisational measures to
-      protect your data, including encryption in transit (TLS 1.2+) and at
-      rest (AES-256), access controls and authentication for internal systems,
-      regular security assessments and penetration testing, and secure OAuth
-      token storage for connected integrations. No method of transmission or
-      storage is completely secure. If you become aware of a security
-      vulnerability, please contact us immediately at
+      protect your data: encryption in transit (TLS 1.2+) and at rest
+      (AES-256), application-layer encryption with per-user keys for highly
+      sensitive fields (travel documents, OAuth credentials, extracted
+      tickets), access controls with logged administrative access, and
+      internal security review of our systems. Where possible we avoid holding
+      credentials at all — mailbox OAuth tokens for Gmail and Outlook are held
+      by our integration provider, not on our servers. No method of
+      transmission or storage is completely secure. If you become aware of a
+      security vulnerability, please contact us immediately at
       <a href="mailto:help@meetosmos.com">help@meetosmos.com</a>.
     </p>
 

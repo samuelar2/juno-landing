@@ -45,11 +45,11 @@ h1, h2, h3, .display {
   background:
     linear-gradient(
       to bottom,
-      rgba(12, 6, 24, 0) 46%,
-      rgba(18, 9, 38, 0.28) 62%,
-      rgba(16, 8, 33, 0.62) 76%,
-      rgba(13, 7, 27, 0.88) 88%,
-      #0c0618 100%
+      rgba(12, 6, 24, 0) 42%,
+      rgba(18, 9, 38, 0.3) 58%,
+      rgba(16, 8, 33, 0.68) 71%,
+      rgba(13, 7, 27, 0.93) 83%,
+      #0c0618 92%
     ) no-repeat,
     radial-gradient(
       ellipse 130% 85% at 50% 108%,
@@ -69,7 +69,18 @@ h1, h2, h3, .display {
   background: radial-gradient(ellipse 62% 42% at 50% 28%, rgba(109, 74, 255, 0.15), transparent 72%);
 }
 .glow-fuchsia {
-  background: radial-gradient(ellipse 55% 40% at 80% 10%, rgba(217, 70, 239, 0.13), transparent 70%);
+  background: radial-gradient(ellipse 52% 36% at 72% 34%, rgba(217, 70, 239, 0.09), transparent 70%);
+}
+
+/* Final CTA + footer share one glow, centred near their boundary so it
+   fades out in every direction instead of being clipped by a section edge. */
+.cta-aurora {
+  background: radial-gradient(
+    ellipse 85% 62% at 50% 68%,
+    rgba(59, 26, 120, 0.72) 0%,
+    rgba(59, 26, 120, 0.38) 45%,
+    rgba(59, 26, 120, 0) 78%
+  );
 }
 
 /* ---------- glass cards ---------- */

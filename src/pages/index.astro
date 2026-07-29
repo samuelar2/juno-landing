@@ -79,44 +79,6 @@ const integrations = [
   { name: "ClickUp", slug: "clickup" },
 ];
 
-const tiers = [
-  {
-    name: "free",
-    price: "$0",
-    per: "to try it",
-    credits: "100 credits, on us",
-    blurb: "The full agent, once over. No card needed.",
-    features: ["Every mini-app and integration", "Bring your own accounts", "One-time trial credits"],
-  },
-  {
-    name: "plus",
-    price: "$15",
-    per: "/month",
-    annual: "or $119/yr",
-    credits: "1,500 credits every month",
-    blurb: "A real assistant for everyday life.",
-    features: ["Background inbox & booking scan", "File and photo attachments", "Pulse, routines & widgets"],
-  },
-  {
-    name: "pro",
-    price: "$30",
-    per: "/month",
-    annual: "or $239/yr",
-    credits: "3,000 credits every month",
-    blurb: "For days that run on Osmos.",
-    features: ["Everything in plus", "Headroom for heavy automation", "More frequent check-ins"],
-    popular: true,
-  },
-  {
-    name: "max",
-    price: "$80",
-    per: "/month",
-    annual: "or $639/yr",
-    credits: "8,000 credits every month",
-    blurb: "For people who run their life on it.",
-    features: ["Everything in pro", "Maximum automation budget", "Made for always-on agents"],
-  },
-];
 ---
 
 <!doctype html>
@@ -162,7 +124,6 @@ const tiers = [
         <a href="/"><img src="/brand/osmos-light.png" alt="osmos" class="h-6 w-auto sm:h-7" /></a>
         <div class="flex items-center gap-7 text-[14.5px] font-medium">
           <a href="#superapp" class="hidden opacity-75 hover:opacity-100 sm:block">features</a>
-          <a href="#pricing" class="hidden opacity-75 hover:opacity-100 sm:block">pricing</a>
           <a
             href="https://apps.apple.com/app/osmos"
             class="rounded-full bg-[#0c0618] px-5 py-2 font-semibold text-white"
@@ -177,8 +138,8 @@ const tiers = [
           the world's first<br />ai&nbsp;super-app.
         </h1>
         <p class="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed text-[#0c0618]/70 sm:text-[19px]">
-          One agent that reads your inbox, books your travel, remembers everything and stays ahead of
-          your day — across 60+ of your apps. It acts. You approve.
+          One agent that tidies your inbox, sorts your travel, remembers the little things and stays
+          a step ahead of your day — across 60+ of your apps. Nothing happens without your OK.
         </p>
         <div class="mt-9">
           <AppleBadge variant="dark" note="Free to start — 100 credits on us" />
@@ -186,7 +147,7 @@ const tiers = [
       </div>
 
       <!-- the whole product, in one element: the input pill, typing real asks -->
-      <div class="relative z-10 mx-auto max-w-2xl px-6 pt-16 pb-40 sm:pt-24 sm:pb-52">
+      <div class="relative z-10 mx-auto max-w-2xl px-6 pt-16 pb-24 sm:pt-24 sm:pb-28">
         <div class="hero-pill">
           <span class="hero-pill-text display" id="hero-typed" aria-hidden="true">&nbsp;</span>
           <span class="sr-only">What's on your mind?</span>
@@ -201,7 +162,7 @@ const tiers = [
 
     <main class="bg-[#0c0618]">
       <!-- ============ SUPER-APP GRID ============ -->
-      <section id="superapp" class="glow-violet relative pt-24 pb-24 sm:pt-32">
+      <section id="superapp" class="glow-violet relative pt-14 pb-24 sm:pt-16">
         <div class="mx-auto max-w-6xl px-6">
           <div class="reveal mx-auto max-w-2xl text-center">
             <div class="section-kicker">one agent, every app</div>
@@ -396,84 +357,25 @@ const tiers = [
         </div>
       </section>
 
-      <!-- ============ PRICING ============ -->
-      <section id="pricing" class="py-24">
-        <div class="mx-auto max-w-6xl px-6">
-          <div class="reveal mx-auto max-w-2xl text-center">
-            <div class="section-kicker">pricing</div>
-            <h2 class="display mt-3 text-[34px] leading-tight font-bold sm:text-[44px]">
-              simple credits.<br />every feature, every tier.
-            </h2>
-            <p class="mt-4 text-[16.5px] leading-relaxed text-white/60">
-              Credits are spent when Osmos thinks and acts for you. Bigger plans buy more of its time —
-              not different features.
-            </p>
-          </div>
-
-          <div class="reveal mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {
-              tiers.map((t) => (
-                <div
-                  class={`relative flex flex-col rounded-2xl p-6 ${
-                    t.popular
-                      ? "border border-[#8b5cf6]/60 bg-[#3b1a78]/30"
-                      : "glass"
-                  }`}
-                >
-                  {t.popular && (
-                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#6d4aff] px-3 py-1 text-[11px] font-bold tracking-wide text-white uppercase">
-                      most popular
-                    </span>
-                  )}
-                  <div class="display text-[22px] font-bold">{t.name}</div>
-                  <div class="mt-3 flex items-baseline gap-1.5">
-                    <span class="display text-[38px] leading-none font-bold">{t.price}</span>
-                    <span class="text-[13.5px] text-white/50">{t.per}</span>
-                  </div>
-                  {t.annual && <div class="mt-1 text-[12.5px] text-white/40">{t.annual}</div>}
-                  <div class="mt-4 text-[14px] font-semibold text-[#c9b8ff]">{t.credits}</div>
-                  <p class="mt-1 text-[13.5px] text-white/55">{t.blurb}</p>
-                  <ul class="mt-5 space-y-2 text-[13.5px] text-white/70">
-                    {t.features.map((f) => (
-                      <li class="flex gap-2.5">
-                        <span class="text-[#c084fc]">✓</span>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))
-            }
-          </div>
-          <p class="reveal mt-6 text-center text-[13px] text-white/40">
-            Subscriptions run through the App Store, priced in your local currency. Cancel anytime.
-          </p>
-        </div>
-      </section>
-
-      <!-- ============ FINAL CTA ============ -->
-      <section class="relative overflow-hidden py-28 text-center">
-        <div
-          class="pointer-events-none absolute inset-0"
-          style="background: radial-gradient(ellipse 75% 65% at 50% 115%, #3b1a78 0%, rgba(59,26,120,0.55) 45%, transparent 75%);"
-        >
-        </div>
-        <div class="reveal relative mx-auto max-w-2xl px-6">
-          <h2 class="display text-[38px] leading-tight font-bold sm:text-[52px]">
-            your agent is waiting.
-          </h2>
-          <p class="mt-4 text-[17px] text-white/65">
-            Free to start. You approve every action. It gets better the longer you talk to it.
-          </p>
-          <div class="mt-9">
-            <AppleBadge variant="light" />
-          </div>
-        </div>
-      </section>
     </main>
 
-    <!-- ============ FOOTER ============ -->
-    <footer class="border-t border-white/10 bg-[#0c0618]">
+    <!-- ============ FINAL CTA + FOOTER (one glow spans both, so it never cuts off) ============ -->
+    <div class="cta-aurora">
+      <section class="py-28 text-center">
+          <div class="reveal mx-auto max-w-2xl px-6">
+            <h2 class="display text-[38px] leading-tight font-bold sm:text-[52px]">
+              your agent is waiting.
+            </h2>
+            <p class="mt-4 text-[17px] text-white/65">
+              Free to start. You approve every action. It gets better the longer you talk to it.
+            </p>
+            <div class="mt-9">
+              <AppleBadge variant="light" />
+            </div>
+          </div>
+      </section>
+
+      <footer>
       <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-6 py-10 sm:flex-row">
         <img src="/brand/osmos-dark.png" alt="osmos" class="h-5 w-auto opacity-90" />
         <nav class="flex flex-wrap items-center justify-center gap-6 text-[13.5px] font-medium text-white/60">
@@ -483,7 +385,8 @@ const tiers = [
         </nav>
         <div class="text-[12.5px] text-white/35">© 2026 Brightboard AI LTD</div>
       </div>
-    </footer>
+      </footer>
+    </div>
 
     <script is:inline>
       // Hero pill: type real asks, one after another.

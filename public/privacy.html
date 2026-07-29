@@ -178,8 +178,8 @@
 
     <h3>2.1 Information you provide directly</h3>
     <ul>
-      <li><strong>Account information:</strong> When you create a osmos account, we collect your name, email address, and authentication credentials.</li>
-      <li><strong>Chat input:</strong> Messages and prompts you submit to the AI assistant, including text typed in the chat interface.</li>
+      <li><strong>Account information:</strong> When you create an osmos account we collect your name and email address. Sign-in is handled by Apple, or by a password you set which we never see or store in readable form.</li>
+      <li><strong>Chat input:</strong> Messages and prompts you submit to the AI assistant, including text you type and any files or photos you attach.</li>
       <li><strong>Preferences and settings:</strong> Your configuration choices, including tone, habit routines, reminder settings, and notification preferences.</li>
       <li><strong>Payment information:</strong> If you subscribe to a paid plan (e.g. Plus or Pro), payment details are processed by our third-party payment provider. We do not store full payment card numbers on our servers.</li>
     </ul>
@@ -199,6 +199,7 @@
       Manager, anytime) stops the scanning and removes the cached data for
       that service.
     </p>
+    <p>The main ones are:</p>
     <table>
       <thead>
         <tr><th>Integration</th><th>Data accessed</th></tr>
@@ -221,19 +222,43 @@
           <td>Workspace identity, channel lists, and message content to read, draft, and send Slack messages.</td>
         </tr>
         <tr>
+          <td>WhatsApp</td>
+          <td>Message content, sender names and numbers, media captions, group names, and your contact list, so osmos can surface messages needing a reply and send messages you ask it to send. Message content is deleted automatically after 7 days; contacts are kept until you disconnect or delete your account.</td>
+        </tr>
+        <tr>
+          <td>Your osmos address</td>
+          <td>If you claim an osmos email address, we operate that mailbox for you: we receive, store and send mail through it, including senders and recipients, subjects, message bodies and attachments. Unlike a connected mailbox, there is no copy held elsewhere — we are the mailbox.</td>
+        </tr>
+        <tr>
+          <td>Travel (rail, hotels, flights)</td>
+          <td>Your traveller profile — name, date of birth, nationality, contact and billing details, loyalty numbers, and passport number where an operator requires it — plus trip details. We send the operator or property whatever they need to issue the booking.</td>
+        </tr>
+        <tr>
           <td>Wallet / Payments</td>
-          <td>Transaction history, payment approval records, and wallet configuration for payment management features.</td>
+          <td>Booking and ticket details osmos extracts from your email — passenger names, booking references, seat and ticket details, and travel-document numbers — plus, if you use agent payments, your card's brand, last four digits and expiry, and a record of each approval. If you open an osmos wallet, we create a custodial account with our wallet provider and record its public blockchain address.</td>
         </tr>
       </tbody>
     </table>
     <p>
+      osmos can also connect to a wider catalogue of services — project
+      trackers, document stores, developer and design tools and others —
+      through our integration partner. For those, the partner holds the
+      authorisation you grant and calls the service on osmos's behalf.
+    </p>
+    <p>
       We access this data via OAuth tokens or secure API connections that you
       explicitly authorise. You can disconnect any integration at any time
-      through the Tool Manager in the App's Core section.
+      through the Tool Manager in the App's Core section. Disconnecting stops
+      osmos accessing the service and deletes what it had cached. For
+      directly connected mailboxes and calendars this also deletes the
+      authorisation itself; for apps connected through our integration
+      partner, the grant remains registered with them until you delete your
+      account, and you can also revoke it in that service's own settings.
     </p>
 
     <h3>2.3 Information collected automatically</h3>
     <ul>
+      <li><strong>Location:</strong> If you allow it, osmos records your device's approximate location when it changes significantly — including while the App is in the background — converts it to a street, neighbourhood and city, and stores that alongside the coordinates on your profile. It is used to make briefings and suggestions reflect where you are, and is included in the context sent to the AI. You can turn this off at any time in Settings, which also clears the stored location.</li>
       <li><strong>Device and usage data:</strong> Device model, operating system version, unique device identifiers, crash logs, and general usage analytics (e.g. features used, session duration).</li>
       <li><strong>Usage statistics:</strong> Aggregated interaction counts displayed in the Usage panel (e.g. weekly interaction totals) are computed locally or server-side to show you your activity.</li>
       <li><strong>Log data:</strong> Server logs that may include your IP address, request timestamps, and API endpoints accessed.</li>
@@ -244,7 +269,7 @@
     <ul>
       <li><strong>To provide and operate the Services:</strong> Processing your chat messages, executing actions across connected apps, delivering morning briefings, running habit routines, and surfacing relevant information from your connected accounts.</li>
       <li><strong>To personalise your experience:</strong> Tailoring AI responses based on your preferences, prior interactions, and connected account data.</li>
-      <li><strong>To improve the Services:</strong> Analysing aggregated, de-identified usage patterns to improve features, fix bugs, and develop new functionality.</li>
+      <li><strong>To improve the Services:</strong> Analysing usage patterns — which features are used, when, and whether they worked — to improve features, fix bugs, and develop new functionality. These events are linked to your account but never contain your messages, emails, or documents.</li>
       <li><strong>To communicate with you:</strong> Sending transactional notifications (e.g. morning briefings, habit reminders, payment approvals) and, where you have opted in, marketing communications.</li>
       <li><strong>To ensure security and prevent abuse:</strong> Detecting and preventing fraud, unauthorised access, and other harmful activities.</li>
       <li><strong>To comply with legal obligations:</strong> Responding to lawful requests from regulatory authorities and law enforcement.</li>
@@ -260,12 +285,13 @@
     </p>
     <ul>
       <li><strong>Machines, not people:</strong> Your chats, emails, and connected-service data are processed by automated systems. Nobody at Brightboard reads them in the normal operation of the service; direct production access is restricted to essential operations — debugging an issue you report, or investigating abuse — and we are progressively locking such access behind per-record, logged decryption.</li>
-      <li><strong>Encryption at rest:</strong> Everything we store is encrypted at rest (AES-256) and in transit (TLS 1.2+). Sensitive personal data — such as travel documents, connected-account credentials, and cached message content — is additionally encrypted at the application layer with keys unique to your account, so a copy of our database alone reveals nothing. Content is decrypted only inside our systems, for the moments a request or automation needs it.</li>
-      <li><strong>Your mailbox stays yours:</strong> Your email passwords and mailbox tokens are never stored on our servers. We do not keep a copy of your mailbox — messages are read transiently to power features, and what we retain is the useful result (a ticket, a calendar event, a needs-reply flag) plus short-lived, size-limited caches.</li>
-      <li><strong>AI subprocessors:</strong> To generate responses and run automations, the content a task needs is processed transiently by our AI infrastructure providers under agreements that prohibit them from training on your data or retaining it. A current list of subprocessor categories is available on request.</li>
+      <li><strong>Encryption at rest:</strong> Everything we store is encrypted at rest (AES-256) and in transit (TLS 1.2+). Sensitive personal data — such as travel documents, connected-account credentials, and cached message content — is additionally encrypted at the application layer with keys unique to your account, so those fields stay unreadable to anyone holding only a copy of the database. Other data — your chat history, the email details we mirror, your tasks and notifications — is stored in readable form, protected by disk-level encryption and access controls rather than per-account keys. This is not end-to-end encryption: we hold the keys, so we are technically able to decrypt what we store, and we restrict and log that access rather than making it impossible.</li>
+      <li><strong>Your mailbox stays yours:</strong> We never see or store your email password. Where a mailbox is connected through our integration partner, the access token stays with them; where you connect Gmail or Outlook directly, we hold the token ourselves, encrypted with a key unique to your account. We do not keep a full copy of your mailbox, but we do mirror the details of your recent inbox — sender, recipients, subject, a short preview and labels — for up to 180 days so the Inbox and your briefings work, and we cache message bodies for a few days. Beyond that we keep the useful result: a ticket, a calendar event, a needs-reply flag.</li>
+      <li><strong>AI subprocessors:</strong> To generate responses and run automations, the content a task needs is processed transiently by our AI infrastructure providers, under agreements or routing constraints that stop them retaining your data or training on it. A current list of subprocessor categories is available on request.</li>
       <li><strong>Product analytics:</strong> We use PostHog (hosted in the EU) to understand how osmos is used — event names, timestamps, and technical metadata only. We do not send message content, email content, or documents to our analytics provider, and analytics data is never used for advertising.</li>
+      <li><strong>Push notifications:</strong> Notifications are delivered through Apple's Push Notification service, and to be useful the alert text contains a short preview of the actual content — the first line of a reply, an email's sender and subject, or a booking's route and price. That preview passes through Apple's servers and appears on your lock screen. You can hide previews in iOS Settings, or turn notifications off entirely.</li>
       <li><strong>Never sold, never used for ads, never used for training:</strong> We do not sell your data, use it for advertising, or use it to train AI models.</li>
-      <li><strong>Automated actions:</strong> osmos may draft or suggest actions (e.g. reply to an email, approve a payment), but actions with significant consequences require your explicit confirmation before execution.</li>
+      <li><strong>Automated actions:</strong> osmos may draft or suggest actions (e.g. reply to an email, approve a payment). Actions with significant consequences ask for your confirmation by default. You can give standing permission in advance — marking a tool "always allow" in the Tool Manager, turning on auto-booking within limits you set, or starting an email errand that osmos then carries on by itself — and once you do, those actions go ahead without asking again.</li>
     </ul>
 
     <h2>5. How We Share Your Information</h2>
@@ -274,7 +300,9 @@
       following limited circumstances:
     </p>
     <ul>
-      <li><strong>Third-party service providers:</strong> We share data with vendors who help us operate the Services (e.g. cloud hosting, analytics, payment processing). These providers are contractually required to use your data only on our behalf and in accordance with this policy.</li>
+      <li><strong>Third-party service providers:</strong> We share data with vendors who help us operate the Services — cloud hosting and databases, AI inference, the integration partner that brokers your connected accounts, email delivery, product analytics, payment and subscription processing, travel booking partners, web search, maps, and sandboxed code execution. These providers are contractually required to use your data only on our behalf and in accordance with this policy. A current list of subprocessor categories is available on request.</li>
+      <li><strong>Apple:</strong> Push notifications are delivered through Apple's servers, and the alert text includes a short preview of the content (see section 4).</li>
+      <li><strong>Travel suppliers:</strong> When you book travel, we send the carrier, hotel or booking partner the passenger details they require to issue it — name, contact details, and where the operator requires it, date of birth and passport number.</li>
       <li><strong>Connected integrations:</strong> When you instruct osmos to take an action (e.g. send an email, post a Slack message), the relevant data is transmitted to the corresponding third-party service through their API.</li>
       <li><strong>Legal requirements:</strong> We may disclose information if required by law, regulation, legal process, or governmental request.</li>
       <li><strong>Business transfers:</strong> In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction. We will notify you of any such change.</li>
@@ -282,17 +310,49 @@
 
     <h2>6. Data Retention</h2>
     <p>
-      We retain your personal data for as long as your account is active or as
-      needed to provide the Services. Chat history is retained for the duration
-      of your account unless you delete it. Cached data from connected services
-      is time-limited (for example, mirrored email metadata is deleted after
-      180 days and message content caches within days). When you disconnect an
-      integration, we stop accessing new data from that service and delete its
-      cached data. You can delete your account at any time in the app
-      (Settings → Delete Account): this immediately and permanently deletes
-      your data — including chats, AI memory, extracted tickets, and uploads —
-      and revokes our access to your connected accounts, except where retention
-      is required by law.
+      We keep different things for different lengths of time.
+    </p>
+    <p>
+      <strong>Deleted automatically:</strong> cached message bodies from a
+      connected mailbox (days); WhatsApp message content (7 days); cached
+      calendar events (90 days); mirrored email details such as sender,
+      subject and preview (180 days); message bodies received at your own
+      osmos address, which we hold as your mailbox rather than as a cache (12
+      months); and expired travel price quotes (24 hours).
+    </p>
+    <p>
+      <strong>Kept for as long as your account exists:</strong> the things
+      osmos creates with and for you — your chats, AI memory, tasks,
+      routines, notifications, briefings, the tickets and bookings it
+      extracts, your travel profile, your sent mail, and your WhatsApp
+      contact list. These are the product: deleting them on a timer would
+      take away what you came for. You can delete individual items in the
+      App, or everything at once by deleting your account.
+    </p>
+    <p>
+      When you disconnect an integration, we stop accessing new data from that
+      service and delete what it had cached. WhatsApp is the exception:
+      messages expire on their usual seven-day cycle and the contact list
+      stays until you delete your account.
+    </p>
+    <p>
+      You can delete your account at any time in the app (Settings → Delete
+      Account). This immediately and permanently deletes your data from our
+      systems — including chats, AI memory, extracted tickets and uploads —
+      and deletes the access tokens we hold for your connected accounts. We
+      also ask our providers to erase what they hold: your connected-app
+      authorisations, your AI memory bank, your WhatsApp session, your osmos
+      email address and your uploaded files. If one of those providers is
+      unreachable at that moment we complete your deletion anyway and record
+      the failure so we can finish the job.
+    </p>
+    <p>
+      Three things do not disappear. Your billing and subscription records
+      stay with Apple and our payment providers, because we are required to
+      keep financial records. If you opened an osmos wallet, the blockchain
+      account itself is public and outside our control. And backups made
+      before you deleted your account age out on their own retention cycle
+      rather than being edited.
     </p>
 
     <h2>7. Data Security</h2>
@@ -303,9 +363,11 @@
       sensitive fields (such as travel documents, connected-account
       credentials, and cached message content — a set we are actively
       expanding), strict access controls, and internal security review of our
-      systems. Where possible we avoid holding credentials at all — mailbox
-      OAuth tokens for Gmail and Outlook are held by our integration
-      provider, not on our servers. No method of transmission or storage is
+      systems. Where a mailbox or calendar is connected through our integration
+      partner, the authorisation stays with them and never reaches us. Where
+      osmos connects to Gmail or Outlook directly, we hold the authorisation
+      ourselves, encrypted at the application layer with a key unique to your
+      account and decrypted only for the moments a request needs it. No method of transmission or storage is
       completely secure. If you become aware of a security vulnerability,
       please contact us immediately at
       <a href="mailto:help@meetosmos.com">help@meetosmos.com</a>.
@@ -366,7 +428,9 @@
 
     <h2>10. Children's Privacy</h2>
     <p>
-      The Services are not directed to individuals under the age of 16. We do
+      The Services are not directed to individuals under the age of 16. When you
+      create an account you confirm that you meet that age requirement; we do
+      not ask for your date of birth and we do not otherwise verify it. We do
       not knowingly collect personal data from children. If we become aware
       that we have collected data from a child under 16, we will take steps to
       delete it promptly. If you believe a child has provided us with personal
@@ -385,8 +449,8 @@
 
     <h2>12. Cookies and Tracking Technologies</h2>
     <p>
-      The App itself does not use browser cookies. We use a mobile analytics
-      SDK (PostHog, hosted in the EU) to record usage events — feature usage,
+      We use a mobile analytics SDK (PostHog, hosted in the EU) to record
+      usage events — feature usage,
       screen views, and technical metadata — for performance monitoring and
       improvement. These events are linked to your account. They never include
       the contents of your messages, emails, or documents.
@@ -395,8 +459,8 @@
     <h2>13. Changes to This Privacy Policy</h2>
     <p>
       We may update this Privacy Policy from time to time. If we make material
-      changes, we will notify you through the App or by email at least 14 days
-      before the changes take effect. Your continued use of the Services after
+      changes, we will notify you through the App or by email. Where practicable we
+      will do so before the changes take effect. Your continued use of the Services after
       the effective date constitutes acceptance of the updated policy.
     </p>
 

@@ -1,0 +1,537 @@
+---
+import "../styles/global.css";
+import AppleBadge from "../components/AppleBadge.astro";
+import PhoneFrame from "../components/PhoneFrame.astro";
+
+const miniApps = [
+  {
+    name: "Inbox",
+    desc: "Triage, summaries and drafted replies — plus an agent that answers email for you.",
+    icon: "M4 6h16v12H4z M4 7l8 6 8-6",
+  },
+  {
+    name: "Travel",
+    desc: "Trains, hotels and flights — searched, held, booked. Tickets filed automatically.",
+    icon: "M22 2L11 13 M22 2l-7 20-4-9-9-4z",
+  },
+  {
+    name: "Wallet",
+    desc: "A card Osmos can use with your approval, hard spending caps, every receipt filed.",
+    icon: "M3 7h18v12H3z M3 11h18 M16 15h2",
+  },
+  {
+    name: "Calendar",
+    desc: "Your calendars and school timetables in one place, events created on request.",
+    icon: "M4 5h16v15H4z M4 9h16 M8 3v4 M16 3v4",
+  },
+  {
+    name: "Routines",
+    desc: "Automations that run on your schedule and report back in glanceable cards.",
+    icon: "M20 8a8 8 0 1 0 2 6 M20 3v5h-5",
+  },
+  {
+    name: "Memory",
+    desc: "Say it once. Preferences, people and plans — remembered and actually used.",
+    icon: "M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z M18 16l.9 2.6L21.5 19.5l-2.6.9L18 23l-.9-2.6-2.6-.9 2.6-.9L18 16z",
+  },
+  {
+    name: "Computer",
+    desc: "Its own browser and code sandbox for the tasks a chat window can't finish.",
+    icon: "M4 17l6-6-6-6 M12 19h8",
+  },
+  {
+    name: "Messages",
+    desc: "WhatsApp and Slack, searched and summarised — nothing sends without you.",
+    icon: "M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z",
+  },
+];
+
+const integrations = [
+  { name: "WhatsApp", slug: "whatsapp" },
+  { name: "Slack", slug: "slack" },
+  { name: "Notion", slug: "notion" },
+  { name: "Linear", slug: "linear" },
+  { name: "GitHub", slug: "github" },
+  { name: "Jira", slug: "jira" },
+  { name: "Google Drive", slug: "googledrive" },
+  { name: "Dropbox", slug: "dropbox" },
+  { name: "Figma", slug: "figma" },
+  { name: "Canva", slug: "canva" },
+  { name: "Trello", slug: "trello" },
+  { name: "Asana", slug: "asana" },
+  { name: "Monday.com", slug: "monday" },
+  { name: "HubSpot", slug: "hubspot" },
+  { name: "Salesforce", slug: "salesforce" },
+  { name: "Stripe", slug: "stripe" },
+  { name: "Zoom", slug: "zoom" },
+  { name: "Google Meet", slug: "googlemeet" },
+  { name: "Discord", slug: "discord" },
+  { name: "Reddit", slug: "reddit" },
+  { name: "LinkedIn", slug: "linkedin" },
+  { name: "Ticketmaster", slug: "ticketmaster" },
+  { name: "Splitwise", slug: "splitwise" },
+  { name: "Airtable", slug: "airtable" },
+  { name: "Confluence", slug: "confluence" },
+  { name: "Zendesk", slug: "zendesk" },
+  { name: "YouTube", slug: "youtube" },
+  { name: "Calendly", slug: "calendly" },
+  { name: "Miro", slug: "miro" },
+  { name: "ClickUp", slug: "clickup" },
+];
+
+const tiers = [
+  {
+    name: "free",
+    price: "$0",
+    per: "to try it",
+    credits: "100 credits, on us",
+    blurb: "The full agent, once over. No card needed.",
+    features: ["Every mini-app and integration", "Bring your own accounts", "One-time trial credits"],
+  },
+  {
+    name: "plus",
+    price: "$15",
+    per: "/month",
+    annual: "or $119/yr",
+    credits: "1,500 credits every month",
+    blurb: "A real assistant for everyday life.",
+    features: ["Background inbox & booking scan", "File and photo attachments", "Pulse, routines & widgets"],
+  },
+  {
+    name: "pro",
+    price: "$30",
+    per: "/month",
+    annual: "or $239/yr",
+    credits: "3,000 credits every month",
+    blurb: "For days that run on Osmos.",
+    features: ["Everything in plus", "Headroom for heavy automation", "More frequent check-ins"],
+    popular: true,
+  },
+  {
+    name: "max",
+    price: "$80",
+    per: "/month",
+    annual: "or $639/yr",
+    credits: "8,000 credits every month",
+    blurb: "For people who run their life on it.",
+    features: ["Everything in pro", "Maximum automation budget", "Made for always-on agents"],
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>osmos — the world's first ai super-app</title>
+    <meta
+      name="description"
+      content="One agent that reads your inbox, books your travel, remembers everything and stays ahead of your day — across 60+ of your apps. You approve every action."
+    />
+    <meta name="theme-color" content="#1b0b3d" />
+    <meta property="og:title" content="osmos — the world's first ai super-app" />
+    <meta
+      property="og:description"
+      content="One agent for your inbox, plans and payments. It acts, you approve."
+    />
+    <meta property="og:url" content="https://meetosmos.com" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/brand/osmos-mark-64.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/brand/osmos-mark-180.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MME55MLNDQ"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-MME55MLNDQ");
+    </script>
+  </head>
+
+  <body>
+    <!-- ============ HERO (light — the original meetosmos gradient) ============ -->
+    <header class="hero-aurora relative text-[#0c0618]">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 pt-7">
+        <a href="/"><img src="/brand/osmos-light.png" alt="osmos" class="h-6 w-auto sm:h-7" /></a>
+        <div class="flex items-center gap-7 text-[14.5px] font-medium">
+          <a href="#superapp" class="hidden opacity-75 hover:opacity-100 sm:block">features</a>
+          <a href="#pricing" class="hidden opacity-75 hover:opacity-100 sm:block">pricing</a>
+          <a
+            href="https://apps.apple.com/app/osmos"
+            class="rounded-full bg-[#0c0618] px-5 py-2 font-semibold text-white"
+          >
+            Get the app
+          </a>
+        </div>
+      </nav>
+
+      <div class="mx-auto max-w-4xl px-6 pt-24 pb-6 text-center sm:pt-32">
+        <h1 class="display text-[44px] leading-[1.05] font-normal sm:text-[68px]">
+          <span class="font-bold">osmos.</span><br />
+          the world's first<br />ai&nbsp;super-app.
+        </h1>
+        <p class="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed text-[#0c0618]/70 sm:text-[19px]">
+          One agent that reads your inbox, books your travel, remembers everything and stays ahead of
+          your day — across 60+ of your apps. It acts. You approve.
+        </p>
+        <div class="mt-9">
+          <AppleBadge variant="dark" note="Free to start — 100 credits on us" />
+        </div>
+      </div>
+
+      <!-- the whole product, in one element: the input pill, typing real asks -->
+      <div class="relative z-10 mx-auto max-w-2xl px-6 pt-16 pb-40 sm:pt-24 sm:pb-52">
+        <div class="hero-pill">
+          <span class="hero-pill-text display" id="hero-typed" aria-hidden="true">&nbsp;</span>
+          <span class="sr-only">What's on your mind?</span>
+          <span class="hero-pill-send">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#3b1a78" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19V5 M5 12l7-7 7 7"></path>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="bg-[#0c0618]">
+      <!-- ============ SUPER-APP GRID ============ -->
+      <section id="superapp" class="glow-violet relative pt-24 pb-24 sm:pt-32">
+        <div class="mx-auto max-w-6xl px-6">
+          <div class="reveal mx-auto max-w-2xl text-center">
+            <div class="section-kicker">one agent, every app</div>
+            <h2 class="display mt-3 text-[34px] leading-tight font-bold sm:text-[44px]">
+              a whole phone's worth of apps,<br class="hidden sm:block" /> behind one conversation.
+            </h2>
+            <p class="mt-4 text-[16.5px] leading-relaxed text-white/60">
+              Osmos isn't a chatbot with plugins. It's mini-apps for the things that matter, run by an
+              agent with over 1,000 tools — so "sort it" is a complete instruction.
+            </p>
+          </div>
+
+          <div class="reveal mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {
+              miniApps.map((app) => (
+                <div class="glass rounded-2xl p-5 transition-colors hover:bg-white/[0.075]">
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="26"
+                    height="26"
+                    fill="none"
+                    stroke="#c084fc"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    {app.icon.split(" M").map((d, i) => (
+                      <path d={(i === 0 ? "" : "M") + d} />
+                    ))}
+                  </svg>
+                  <div class="display mt-3.5 text-[19px] font-bold">{app.name.toLowerCase()}</div>
+                  <p class="mt-1.5 text-[13.5px] leading-relaxed text-white/55">{app.desc}</p>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="reveal mt-12 flex flex-wrap justify-center gap-2">
+            {
+              integrations.map((app) => (
+                <span class="chip">
+                  <img src={`/logos/${app.slug}.png`} alt="" width="18" height="18" loading="lazy" />
+                  {app.name}
+                </span>
+              ))
+            }
+            <span class="chip !text-white/85">+ 30 more</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FEATURE STORIES ============ -->
+      <section class="mx-auto max-w-6xl space-y-28 px-6 py-24 sm:space-y-40">
+        <!-- inbox -->
+        <div class="reveal grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <div class="section-kicker">email</div>
+            <h2 class="display mt-3 text-[32px] leading-tight font-bold sm:text-[40px]">your inbox, handled.</h2>
+            <p class="mt-4 max-w-lg text-[16.5px] leading-relaxed text-white/60">
+              Connect Gmail or Outlook and Osmos triages the noise, flags what actually needs you, and
+              has replies drafted before you've opened the thread. Search your whole inbox in plain
+              English.
+            </p>
+            <div class="glass mt-7 max-w-lg rounded-2xl p-5">
+              <div class="text-[14px] font-semibold text-[#c9b8ff]">Your agent gets its own email address</div>
+              <p class="mt-1.5 text-[14px] leading-relaxed text-white/55">
+                Osmos corresponds from <span class="text-white/85">you@osmos&#8230;</span> on your behalf —
+                chasing replies, arranging meetings, handling sign-ups — and keeps working when people
+                write back.
+              </p>
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <PhoneFrame
+              shot="/screens/inbox.png"
+              alt="The osmos inbox: triaged threads with needs-reply flags"
+            />
+          </div>
+        </div>
+
+        <!-- travel & payments -->
+        <div class="reveal grid items-center gap-12 lg:grid-cols-2">
+          <div class="flex justify-center lg:order-1">
+            <PhoneFrame shot="/screens/hotel.png" alt="osmos finding hotels near a Madrid restaurant, bookable in one tap" />
+          </div>
+          <div class="lg:order-2">
+            <div class="section-kicker">travel &amp; payments</div>
+            <h2 class="display mt-3 text-[32px] leading-tight font-bold sm:text-[40px]">
+              plans that book themselves.
+            </h2>
+            <p class="mt-4 max-w-lg text-[16.5px] leading-relaxed text-white/60">
+              Trains, hotels, flights — Osmos finds the option you'd have picked, holds it, and pays
+              with your saved card the moment you approve. Tickets land in your wallet as PDFs; your
+              travel profile fills in the boring bits.
+            </p>
+            <ul class="mt-6 max-w-lg space-y-2.5 text-[15px] text-white/70">
+              <li class="flex gap-3"><span class="text-[#c084fc]">—</span> Every purchase needs your approval, unless you say otherwise</li>
+              <li class="flex gap-3"><span class="text-[#c084fc]">—</span> Hard spending caps: per booking, per day, refundable-only</li>
+              <li class="flex gap-3"><span class="text-[#c084fc]">—</span> Bookings from your email are filed to your wallet automatically</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- memory -->
+        <div class="reveal grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <div class="section-kicker">memory</div>
+            <h2 class="display mt-3 text-[32px] leading-tight font-bold sm:text-[40px]">a memory that sticks.</h2>
+            <p class="mt-4 max-w-lg text-[16.5px] leading-relaxed text-white/60">
+              Say it once. Preferences, people, plans, the railcard you always forget — Osmos remembers,
+              and quietly uses it the next time it books, drafts or plans for you.
+            </p>
+            <p class="mt-4 max-w-lg text-[16.5px] leading-relaxed text-white/60">
+              Your memories are yours: browse them, edit them, delete them — or delete everything.
+            </p>
+          </div>
+          <div class="flex justify-center">
+            <PhoneFrame
+              shot="/screens/memory.png"
+              alt="osmos remembering preferences mid-conversation: aisle seat always, vegetarian for food picks"
+            />
+          </div>
+        </div>
+
+        <!-- proactive -->
+        <div class="reveal grid items-center gap-12 lg:grid-cols-2">
+          <div class="flex justify-center lg:order-1">
+            <PhoneFrame
+              shot="/screens/pulse.png"
+              alt="The osmos home screen surfacing a timely reminder"
+            />
+          </div>
+          <div class="lg:order-2">
+            <div class="section-kicker">pulse</div>
+            <h2 class="display mt-3 text-[32px] leading-tight font-bold sm:text-[40px]">ahead of your day.</h2>
+            <p class="mt-4 max-w-lg text-[16.5px] leading-relaxed text-white/60">
+              While you're not looking, Osmos checks your connected apps and curates what deserves your
+              attention: a briefing before the day starts, a nudge before something slips, a drafted
+              reply before the deadline.
+            </p>
+            <ul class="mt-6 max-w-lg space-y-2.5 text-[15px] text-white/70">
+              <li class="flex gap-3"><span class="text-[#c084fc]">—</span> Routines that run on your schedule and report back in cards</li>
+              <li class="flex gap-3"><span class="text-[#c084fc]">—</span> Home-screen widgets and Apple Shortcuts for your daily brief</li>
+              <li class="flex gap-3"><span class="text-[#c084fc]">—</span> Never spam: it pings you only when something needs you</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TRUST ============ -->
+      <section class="glow-fuchsia relative py-24">
+        <div class="mx-auto max-w-6xl px-6">
+          <div class="reveal mx-auto max-w-2xl text-center">
+            <div class="section-kicker">trust</div>
+            <h2 class="display mt-3 text-[34px] leading-tight font-bold sm:text-[44px]">
+              it works for you.<br />and only you.
+            </h2>
+            <p class="mt-4 text-[16.5px] leading-relaxed text-white/60">
+              An agent that reads your email and spends your money has to earn it. This is the deal:
+            </p>
+          </div>
+
+          <div class="reveal mt-12 grid gap-4 sm:grid-cols-2">
+            <div class="glass rounded-2xl p-6">
+              <div class="display text-[20px] font-bold">you approve every action</div>
+              <p class="mt-2 text-[14.5px] leading-relaxed text-white/55">
+                Sending, posting, booking, paying — anything that acts on the world waits for your
+                explicit yes. Automation is opt-in, per tool, with limits you set.
+              </p>
+            </div>
+            <div class="glass rounded-2xl p-6">
+              <div class="display text-[20px] font-bold">your mailbox stays yours</div>
+              <p class="mt-2 text-[14.5px] leading-relaxed text-white/55">
+                Osmos reads transiently and doesn't keep a copy of your mailbox. What it does store is
+                encrypted at rest with per-account keys.
+              </p>
+            </div>
+            <div class="glass rounded-2xl p-6">
+              <div class="display text-[20px] font-bold">never sold. never for ads.</div>
+              <p class="mt-2 text-[14.5px] leading-relaxed text-white/55">
+                Your data is never sold, never used for advertising, and never used to train AI models.
+              </p>
+            </div>
+            <div class="glass rounded-2xl p-6">
+              <div class="display text-[20px] font-bold">leave with everything</div>
+              <p class="mt-2 text-[14.5px] leading-relaxed text-white/55">
+                Export your data whenever you like. Delete your account and it's gone — chats, memories,
+                tickets, connections, all of it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PRICING ============ -->
+      <section id="pricing" class="py-24">
+        <div class="mx-auto max-w-6xl px-6">
+          <div class="reveal mx-auto max-w-2xl text-center">
+            <div class="section-kicker">pricing</div>
+            <h2 class="display mt-3 text-[34px] leading-tight font-bold sm:text-[44px]">
+              simple credits.<br />every feature, every tier.
+            </h2>
+            <p class="mt-4 text-[16.5px] leading-relaxed text-white/60">
+              Credits are spent when Osmos thinks and acts for you. Bigger plans buy more of its time —
+              not different features.
+            </p>
+          </div>
+
+          <div class="reveal mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {
+              tiers.map((t) => (
+                <div
+                  class={`relative flex flex-col rounded-2xl p-6 ${
+                    t.popular
+                      ? "border border-[#8b5cf6]/60 bg-[#3b1a78]/30"
+                      : "glass"
+                  }`}
+                >
+                  {t.popular && (
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#6d4aff] px-3 py-1 text-[11px] font-bold tracking-wide text-white uppercase">
+                      most popular
+                    </span>
+                  )}
+                  <div class="display text-[22px] font-bold">{t.name}</div>
+                  <div class="mt-3 flex items-baseline gap-1.5">
+                    <span class="display text-[38px] leading-none font-bold">{t.price}</span>
+                    <span class="text-[13.5px] text-white/50">{t.per}</span>
+                  </div>
+                  {t.annual && <div class="mt-1 text-[12.5px] text-white/40">{t.annual}</div>}
+                  <div class="mt-4 text-[14px] font-semibold text-[#c9b8ff]">{t.credits}</div>
+                  <p class="mt-1 text-[13.5px] text-white/55">{t.blurb}</p>
+                  <ul class="mt-5 space-y-2 text-[13.5px] text-white/70">
+                    {t.features.map((f) => (
+                      <li class="flex gap-2.5">
+                        <span class="text-[#c084fc]">✓</span>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+          <p class="reveal mt-6 text-center text-[13px] text-white/40">
+            Subscriptions run through the App Store, priced in your local currency. Cancel anytime.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ FINAL CTA ============ -->
+      <section class="relative overflow-hidden py-28 text-center">
+        <div
+          class="pointer-events-none absolute inset-0"
+          style="background: radial-gradient(ellipse 75% 65% at 50% 115%, #3b1a78 0%, rgba(59,26,120,0.55) 45%, transparent 75%);"
+        >
+        </div>
+        <div class="reveal relative mx-auto max-w-2xl px-6">
+          <h2 class="display text-[38px] leading-tight font-bold sm:text-[52px]">
+            your agent is waiting.
+          </h2>
+          <p class="mt-4 text-[17px] text-white/65">
+            Free to start. You approve every action. It gets better the longer you talk to it.
+          </p>
+          <div class="mt-9">
+            <AppleBadge variant="light" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="border-t border-white/10 bg-[#0c0618]">
+      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-6 py-10 sm:flex-row">
+        <img src="/brand/osmos-dark.png" alt="osmos" class="h-5 w-auto opacity-90" />
+        <nav class="flex flex-wrap items-center justify-center gap-6 text-[13.5px] font-medium text-white/60">
+          <a href="/privacy.html" class="hover:text-white">Privacy Policy</a>
+          <a href="/terms.html" class="hover:text-white">Terms of Use</a>
+          <a href="mailto:hello@meetosmos.com" class="hover:text-white">Contact</a>
+        </nav>
+        <div class="text-[12.5px] text-white/35">© 2026 Brightboard AI LTD</div>
+      </div>
+    </footer>
+
+    <script is:inline>
+      // Hero pill: type real asks, one after another.
+      (() => {
+        const el = document.getElementById("hero-typed");
+        if (!el) return;
+        const prompts = [
+          "get me to Paris on Friday morning",
+          "reply to Jonas about the deposit",
+          "what needs me today?",
+          "book dinner near the office Thursday",
+          "find a hotel near the Marais",
+          "remind me before mum's birthday",
+        ];
+        if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          el.textContent = prompts[0];
+          return;
+        }
+        let p = 0, i = 0, deleting = false;
+        const tick = () => {
+          const text = prompts[p];
+          if (!deleting) {
+            i++;
+            el.textContent = text.slice(0, i);
+            if (i === text.length) { deleting = true; return setTimeout(tick, 2100); }
+            return setTimeout(tick, 38 + Math.random() * 45);
+          }
+          i -= 3;
+          if (i <= 0) { i = 0; deleting = false; p = (p + 1) % prompts.length; el.innerHTML = "&nbsp;"; return setTimeout(tick, 420); }
+          el.textContent = text.slice(0, i);
+          return setTimeout(tick, 16);
+        };
+        setTimeout(tick, 900);
+      })();
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-visible");
+              observer.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

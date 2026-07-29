@@ -64,6 +64,33 @@ h1, h2, h3, .display {
   background-size: 100% 100%;
 }
 
+/* Mobile: the viewport is tall and narrow, so the same ellipse would
+   flood the whole screen in deep purple. Sit the glow lower, shorten
+   its reach and lighten the mids — more white up top, gentler purple. */
+@media (max-width: 640px) {
+  .hero-aurora {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(12, 6, 24, 0) 55%,
+        rgba(18, 9, 38, 0.22) 68%,
+        rgba(16, 8, 33, 0.55) 79%,
+        rgba(13, 7, 27, 0.9) 88%,
+        #0c0618 95%
+      ) no-repeat,
+      radial-gradient(
+        ellipse 175% 52% at 50% 104%,
+        #4a2596 0%,
+        rgba(74, 37, 150, 0.75) 34%,
+        rgba(74, 37, 150, 0.4) 58%,
+        rgba(74, 37, 150, 0.15) 78%,
+        rgba(74, 37, 150, 0) 94%
+      ) no-repeat,
+      #ffffff;
+    background-size: 100% 100%;
+  }
+}
+
 /* soft aurora glows for dark sections */
 .glow-violet {
   background: radial-gradient(ellipse 62% 42% at 50% 28%, rgba(109, 74, 255, 0.15), transparent 72%);
